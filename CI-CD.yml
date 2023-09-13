@@ -1,0 +1,22 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - new 
+
+jobs:
+  build:
+    runs-on: ubuntu
+
+    steps:
+    
+      - name: Linting
+        run: |
+          npm run lint
+        working-directory: ./streaming-service/src/linting/..
+
+      - name: Unit Testing
+        run: |
+          npm test
+        working-directory: ./streaming-service/src/test/..
